@@ -1,0 +1,838 @@
+{
+	"info": {
+		"_postman_id": "60d9a5f8-c0a4-4c89-b98e-6116117f5673",
+		"name": "jokes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37995697"
+	},
+	"item": [
+		{
+			"name": "jokes",
+			"item": [
+				{
+					"name": "add joke",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jokeResponse = pm.response.json(); ",
+									"pm.environment.set(\"jokeId\", `/${jokeResponse.id}`)",
+									"",
+									"pm.test(\"Status code is 200\"),function (){",
+									"    pm.response.to.have.status(200);",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n     \"joke\": \"not funny\",\n    \"content\": \"at all\" \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}{{jokeRouter}}",
+							"host": [
+								"{{base-url}}{{jokeRouter}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all jokes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}/api/joke/all",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"joke",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}{{jokeRouter}}{{jokeId}}",
+							"host": [
+								"{{base-url}}{{jokeRouter}}{{jokeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get 3 random jockes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}{{jokeRouter}}/random/3",
+							"host": [
+								"{{base-url}}{{jokeRouter}}"
+							],
+							"path": [
+								"random",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update joke",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"joke\": \"wht?\",\n    \"content\": \"n got\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}{{jokeRouter}}{{jokeId}}",
+							"host": [
+								"{{base-url}}{{jokeRouter}}{{jokeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "no filed",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}{{jokeRouter}}{{jokeId}}",
+							"host": [
+								"{{base-url}}{{jokeRouter}}{{jokeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "missing filed",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"no joke\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}{{jokeRouter}}{{jokeId}}",
+							"host": [
+								"{{base-url}}{{jokeRouter}}{{jokeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete joke",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}{{jokeRouter}}{{jokeId}}",
+							"host": [
+								"{{base-url}}{{jokeRouter}}{{jokeId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "add product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let productResponse = pm.response.json(); ",
+									"pm.environment.set(\"productId\", `/${productResponse.id}`)",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n     \"name\": \"banana\",\n    \"price\": 12\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}{{productRoute}}",
+							"host": [
+								"{{base-url}}{{productRoute}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "product validation error",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n     \"name\": \"banana\",\n    \"price\": 12,\n    \"inStock\": \"fdfsa\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}{{productRoute}}",
+							"host": [
+								"{{base-url}}{{productRoute}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all products",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}{{productRoute}}/all",
+							"host": [
+								"{{base-url}}{{productRoute}}"
+							],
+							"path": [
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get product by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}{{productRoute}}{{productId}}",
+							"host": [
+								"{{base-url}}{{productRoute}}{{productId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get randoms products",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}{{productRoute}}/random/2",
+							"host": [
+								"{{base-url}}{{productRoute}}"
+							],
+							"path": [
+								"random",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"window\",\n    \"price\": 12,\n    \"inStock\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}{{productRoute}}{{productId}}",
+							"host": [
+								"{{base-url}}{{productRoute}}{{productId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}{{productRoute}}{{productId}}",
+							"host": [
+								"{{base-url}}{{productRoute}}{{productId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete not exist product - 404",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}{{productRoute}}{{productId}}",
+							"host": [
+								"{{base-url}}{{productRoute}}{{productId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "add user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let userResponse = pm.response.json(); ",
+									"pm.environment.set(\"userId\", `/${userResponse.id}`)",
+									"pm.environment.set(\"pureUserId\" ,userResponse.id)",
+									"",
+									"pm.test(\"Status code is 200\"),function (){",
+									"    pm.response.to.have.status(200)};"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"sddd\",\n    \"email\": \"ds@sdf.com\",\n    \"password\": \"dsfads\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}{{userRoute}}",
+							"host": [
+								"{{base-url}}{{userRoute}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}{{userRoute}}/all",
+							"host": [
+								"{{base-url}}{{userRoute}}"
+							],
+							"path": [
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}{{userRoute}}{{userId}}",
+							"host": [
+								"{{base-url}}{{userRoute}}{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get randoms users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}{{userRoute}}/random/3",
+							"host": [
+								"{{base-url}}{{userRoute}}"
+							],
+							"path": [
+								"random",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"12345532§1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}{{userRoute}}{{userId}}",
+							"host": [
+								"{{base-url}}{{userRoute}}{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"status code is 200\" , ()=>{",
+									"    pm.response.to.have.status(200)",
+									"})",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}{{userRoute}}{{userId}}",
+							"host": [
+								"{{base-url}}{{userRoute}}{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete not exist user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"status 404\", ()=>{",
+									"pm.response.to.have.status(404)    ",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}{{userRoute}}{{userId}}",
+							"host": [
+								"{{base-url}}{{userRoute}}{{userId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"statusRun\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.status).to.eql(\"Server is running\")",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base-url}}/api/status",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"api",
+						"status"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
