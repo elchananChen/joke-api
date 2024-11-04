@@ -15,7 +15,7 @@ async function randerAllJokes() {
   const jokes = await getAllJokes();
   jokes.forEach((joke) => {
     const liEL = document.createElement("li");
-    liEL.textContent = ` ${joke.joke} :  ${joke.content}`;
+    liEL.textContent = ` ${joke.joke} `;
     allJokesEL.appendChild(liEL);
   });
 }

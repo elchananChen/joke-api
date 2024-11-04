@@ -12,14 +12,13 @@ article {
   height: 100%;
   width: 100%;
   background-color: var(--color-yellow-green-100);
-  padding: 1rem;
+  padding: 0.5rem;
 }
 .inner-wrapper {
   height: 100%;
   width: 100%;
   background-color: var(--color-green-oil-300);
   padding: 1rem;
-  border-radius: 1rem;
 }
 
 h1 {
@@ -29,8 +28,8 @@ h1 {
 }
 
 main {
-  /* background-color: var(--color-yellow-green-100); */
-  /* border-radius: 1rem; */
+  background-color: var(--color-yellow-green-100);
+  border-radius: 1rem;
 }
 li {
   padding-block: 0.5rem;
