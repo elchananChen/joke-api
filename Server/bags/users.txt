@@ -1,0 +1,2 @@
+router.get("all", userController.getAllUsers);
+אם אני כותב ככה   (בלי /) בראוטר של משתמשים  אני מקבל את כל המוצרים! משום מה..
