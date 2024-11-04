@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 import jokesRoute from "./routes/jokesRoute.js";
 import usersRoute from "./routes/usersRoute.js";
 import prductRoute from "./routes/productsRoute.js";
-import cors from "cors";
+const cors = require("cors");
 
 dotenv.config();
 

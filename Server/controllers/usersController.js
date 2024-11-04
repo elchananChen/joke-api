@@ -22,7 +22,7 @@ const addUser = async (req, res) => {
     const savedUser = await newUser.save();
     const id = savedUser._id;
     res.send({
-      message: "seve this id to delete or update your joke latter on",
+      message: "seve this id to delete or update the user latter on",
       id,
     });
   } catch (error) {
