@@ -1,7 +1,4 @@
 import User from "../models/usersModel.js";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 //  get all users
 const getAllUsers = async (req, res) => {
@@ -128,22 +125,6 @@ const deleteUser = async (req, res) => {
     res.status(500).send({ error });
   }
 };
-
-async function hashPassword(userPassword) {
-  const saltRounds = 10;
-  const combinedPassword = userPassword + process.env.ENCYPTION_SECRET;
-  const hashedPassword = await bcrypt.hash(
-    combinedPassword,
-    saltRounds,
-    (err, hash) => {
-      if (err) {
-        throw new Error("hase problem");
-      }
-      return hash;
-    }
-  );
-  return hashedPassword;
-}
 
 export const userController = {
   getAllUsers,
