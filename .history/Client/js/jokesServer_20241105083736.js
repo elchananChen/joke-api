@@ -2,20 +2,21 @@ const ROUTE = "http://localhost:3000/api/joke";
 
 // get all jokes
 // TODO ERROR HENDELING
-// WORK
+// WORK - RETURN DATA IN ARRAY
 const getAllJokes = async () => {
   try {
     const response = await axios.get(`${ROUTE}/all`);
+    console.log(response.data); // נתונים שמתקבלים
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.log(error); // הדפסת שגיאה
     return { error: error.message };
   }
 };
 
 //get random jokes
 // TODO ERROR HENDELING
-// WORK
+// WORK - RETURN DATA IN ARRAY
 const getRandomsJokes = async (num) => {
   try {
     const response = await axios.get(`${ROUTE}/random/${num}`);
@@ -28,7 +29,7 @@ const getRandomsJokes = async (num) => {
 
 // get joke by id
 // TODO ERROR HENDELING
-// WORK
+// WORK - RETURN DATA IN ARRAY
 const getJokeById = async (jokeId) => {
   try {
     const response = await axios.get(`${ROUTE}/${jokeId}`);
@@ -39,8 +40,7 @@ const getJokeById = async (jokeId) => {
   }
 };
 
-// TODO ERROR HENDELING
-// WORK
+// add joke
 const addJokeByUserId = async (joke, content, userId) => {
   try {
     const response = await axios.post(`${ROUTE}`, {
@@ -54,13 +54,14 @@ const addJokeByUserId = async (joke, content, userId) => {
     return { error: error.message };
   }
 };
+addJokeByUserId("from claient", "yey", "6729042889051d9c191dc1e5");
 
 // update joke
 const updateJoke = async (jokeId, jokeChange, contentChange) => {
   try {
     const response = await axios.patch(`${ROUTE}/${jokeId}`, {
-      joke: jokeChange,
-      content: contentChange,
+      jokeChange,
+      contentChange,
     });
     return response.data;
   } catch (error) {
@@ -68,7 +69,6 @@ const updateJoke = async (jokeId, jokeChange, contentChange) => {
     return { error: error.message };
   }
 };
-updateJoke("6729bd30b9d5d8d8e1215925", "from client", "doubel yey");
 
 // delete joke
 const deleteJoke = async (jokeId) => {

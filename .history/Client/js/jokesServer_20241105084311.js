@@ -6,9 +6,10 @@ const ROUTE = "http://localhost:3000/api/joke";
 const getAllJokes = async () => {
   try {
     const response = await axios.get(`${ROUTE}/all`);
+    console.log(response.data); // נתונים שמתקבלים
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.log(error); // הדפסת שגיאה
     return { error: error.message };
   }
 };

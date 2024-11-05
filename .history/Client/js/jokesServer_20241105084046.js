@@ -6,9 +6,10 @@ const ROUTE = "http://localhost:3000/api/joke";
 const getAllJokes = async () => {
   try {
     const response = await axios.get(`${ROUTE}/all`);
+    console.log(response.data); // נתונים שמתקבלים
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.log(error); // הדפסת שגיאה
     return { error: error.message };
   }
 };
@@ -59,8 +60,8 @@ const addJokeByUserId = async (joke, content, userId) => {
 const updateJoke = async (jokeId, jokeChange, contentChange) => {
   try {
     const response = await axios.patch(`${ROUTE}/${jokeId}`, {
-      joke: jokeChange,
-      content: contentChange,
+      jokeChange,
+      contentChange,
     });
     return response.data;
   } catch (error) {
@@ -68,7 +69,7 @@ const updateJoke = async (jokeId, jokeChange, contentChange) => {
     return { error: error.message };
   }
 };
-updateJoke("6729bd30b9d5d8d8e1215925", "from client", "doubel yey");
+updateJoke("from client", "doubel yey");
 
 // delete joke
 const deleteJoke = async (jokeId) => {

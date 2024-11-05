@@ -1,22 +1,17 @@
 const ROUTE = "http://localhost:3000/api/joke";
 
-// get all jokes
-// TODO ERROR HENDELING
-// WORK
 const getAllJokes = async () => {
   try {
     const response = await axios.get(`${ROUTE}/all`);
+    console.log(response.data); // נתונים שמתקבלים
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.log(error); // הדפסת שגיאה
     return { error: error.message };
   }
 };
 
-//get random jokes
-// TODO ERROR HENDELING
-// WORK
-const getRandomsJokes = async (num) => {
+const getRandomsJoke = async (num) => {
   try {
     const response = await axios.get(`${ROUTE}/random/${num}`);
     return response.data;
@@ -26,21 +21,18 @@ const getRandomsJokes = async (num) => {
   }
 };
 
-// get joke by id
-// TODO ERROR HENDELING
-// WORK
+console.log(getRandomsJoke(5));
+
 const getJokeById = async (jokeId) => {
   try {
     const response = await axios.get(`${ROUTE}/${jokeId}`);
-    return response.data.joke;
+    return response.data;
   } catch (error) {
     console.log(error);
     return { error: error.message };
   }
 };
 
-// TODO ERROR HENDELING
-// WORK
 const addJokeByUserId = async (joke, content, userId) => {
   try {
     const response = await axios.post(`${ROUTE}`, {
@@ -48,6 +40,7 @@ const addJokeByUserId = async (joke, content, userId) => {
       content,
       creatadBy: userId,
     });
+
     return response.data;
   } catch (error) {
     console.log(error);
@@ -55,22 +48,20 @@ const addJokeByUserId = async (joke, content, userId) => {
   }
 };
 
-// update joke
 const updateJoke = async (jokeId, jokeChange, contentChange) => {
   try {
     const response = await axios.patch(`${ROUTE}/${jokeId}`, {
-      joke: jokeChange,
-      content: contentChange,
+      jokeChange,
+      contentChange,
     });
+
     return response.data;
   } catch (error) {
     console.log(error);
     return { error: error.message };
   }
 };
-updateJoke("6729bd30b9d5d8d8e1215925", "from client", "doubel yey");
 
-// delete joke
 const deleteJoke = async (jokeId) => {
   try {
     const response = await axios.delete(`${ROUTE}/${jokeId}`);
@@ -83,7 +74,7 @@ const deleteJoke = async (jokeId) => {
 
 export const jokesController = {
   getAllJokes,
-  getRandomsJokes,
+  getRandomsJoke,
   getJokeById,
   addJokeByUserId,
   updateJoke,
