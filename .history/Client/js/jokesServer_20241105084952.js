@@ -48,7 +48,7 @@ const addJokeByUserId = async (joke, content, userId) => {
       content,
       creatadBy: userId,
     });
-    // return response.message;
+    return response.data;
   } catch (error) {
     console.log(error);
     return { error: error.message };
@@ -56,13 +56,14 @@ const addJokeByUserId = async (joke, content, userId) => {
 };
 
 // update joke
-// TODO: ERROR HENDELING
 const updateJoke = async (jokeId, jokeChange, contentChange) => {
   try {
     const response = await axios.patch(`${ROUTE}/${jokeId}`, {
       joke: jokeChange,
       content: contentChange,
     });
+    console.log(response);
+
     return response.data;
   } catch (error) {
     console.log(error);
