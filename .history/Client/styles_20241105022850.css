@@ -1,6 +1,5 @@
 @import url("./css/variebles.css");
 @import url("./css/reset.css");
-@import url("./css/fonts.css");
 
 article {
   display: flex;
@@ -12,16 +11,12 @@ article {
 }
 
 .outer-wrapper {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
   height: 100%;
   width: 100%;
   background-color: var(--color-yellow-green-100);
   padding: 1rem;
 }
 .inner-wrapper {
-  flex-grow: 1;
   height: 100%;
   width: 100%;
   background-color: var(--color-green-oil-300);
