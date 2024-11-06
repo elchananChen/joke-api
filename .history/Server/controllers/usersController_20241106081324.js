@@ -1,6 +1,7 @@
 import User from "../models/usersModel.js";
+import dotenv from "dotenv";
 import { auth } from "../auth/auth.js";
-import jwt from "jsonwebtoken";
+dotenv.config();
 
 //  get all users
 const getAllUsers = async (req, res) => {
@@ -57,7 +58,7 @@ const addUser = async (req, res) => {
   try {
     const hashedPassword = await auth.makeHashedPassword(
       req.body.password,
-      process.env.BCRYPT_KEY,
+      process.env.ENCYPTION_SECRET,
       process.env.SALT_NUM
     );
 

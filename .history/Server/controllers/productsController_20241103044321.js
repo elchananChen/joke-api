@@ -11,42 +11,6 @@ const getAllProducts = async (req, res) => {
   }
 };
 
-// get random products  by num of products
-const getRandomeProducts = async (req, res) => {
-  try {
-    let num = req.params.num || 1;
-
-    if (isNaN(num) || num < 1) {
-      num = 1;
-    }
-
-    const randomProducts = await Product.aggregate([
-      { $sample: { size: parseInt(num) } },
-    ]);
-
-    res.send(randomProducts);
-  } catch (err) {
-    console.log(err);
-    res.status(500).send({ err });
-  }
-};
-
-// get product by id
-async function getProductById(req, res, next) {
-  let product;
-  try {
-    product = await Product.findById(req.params.id);
-    if (product === null) {
-      return res.status(404).json({ massege: "id not found" });
-    }
-    res.send({ product });
-  } catch (error) {
-    return res.status(500).json({ massege: error.massege });
-  }
-  res.product = product;
-  next();
-}
-
 //add product
 const addProduct = async (req, res) => {
   try {
@@ -87,6 +51,42 @@ const addProduct = async (req, res) => {
     }
   }
 };
+
+// get random products  by num of products
+const getRandomeProducts = async (req, res) => {
+  try {
+    let num = req.params.num || 1;
+
+    if (isNaN(num) || num < 1) {
+      num = 1;
+    }
+
+    const randomProducts = await Product.aggregate([
+      { $sample: { size: parseInt(num) } },
+    ]);
+
+    res.send(randomProducts);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ err });
+  }
+};
+
+// get product by id
+async function getProductById(req, res, next) {
+  let product;
+  try {
+    product = await Product.findById(req.params.id);
+    if (product === null) {
+      return res.status(404).json({ massege: "id not found" });
+    }
+    res.send({ product });
+  } catch (error) {
+    return res.status(500).json({ massege: error.massege });
+  }
+  res.product = product;
+  next();
+}
 
 // update product
 const updateProduct = async (req, res) => {
