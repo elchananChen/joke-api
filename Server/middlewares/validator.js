@@ -6,7 +6,6 @@ const validateJoke = (req, res, next) => {
   }
   next();
 };
-const s
 
 export const validator = {
    validateJoke,

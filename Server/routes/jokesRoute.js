@@ -1,5 +1,5 @@
 import express from "express";
-import { validateJoke } from "../middlewares/validator.js";
+import { validator } from "../middlewares/validator.js";
 import { jokeController } from "../controllers/jokeController.js";
 
 const router = express.Router();
@@ -16,10 +16,10 @@ router.get("/:id", jokeController.getJokeById, (req, res) => {
 });
 
 //add joke
-router.post("/", jokeController.addJoke);
+router.post("/", validator.validateJoke, jokeController.addJoke);
 
 // update joke
-router.patch("/:id", validateJoke, jokeController.updateJoke);
+router.patch("/:id", jokeController.updateJoke);
 
 //delete joke
 router.delete("/:id", jokeController.deleteJoke);
