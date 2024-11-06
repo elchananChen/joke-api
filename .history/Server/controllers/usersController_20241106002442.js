@@ -1,6 +1,7 @@
 import User from "../models/usersModel.js";
 import dotenv from "dotenv";
 import { auth } from "../auth/auth.js";
+import { PhoneNumber } from "libphonenumber-js";
 dotenv.config();
 
 //  get all users
@@ -28,8 +29,8 @@ const addUser = async (req, res) => {
       lastName: req.body.lastName,
       email: req.body.email,
       country: req.body.country,
-      phone: req.body.phone,
-      password: hashedPassword,
+      Phone: req.body.Phone,
+      password: req.body.password,
     });
     const savedUser = await newUser.save();
     const id = savedUser._id;

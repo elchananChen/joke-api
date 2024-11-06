@@ -22,6 +22,7 @@ const addUser = async (req, res) => {
       process.env.ENCYPTION_SECRET,
       process.env.SALT_NUM
     );
+    console.log();
 
     const newUser = new User({
       firstName: req.body.firstName,
@@ -29,7 +30,7 @@ const addUser = async (req, res) => {
       email: req.body.email,
       country: req.body.country,
       phone: req.body.phone,
-      password: hashedPassword,
+      password: req.body.password,
     });
     const savedUser = await newUser.save();
     const id = savedUser._id;

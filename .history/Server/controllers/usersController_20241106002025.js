@@ -28,8 +28,7 @@ const addUser = async (req, res) => {
       lastName: req.body.lastName,
       email: req.body.email,
       country: req.body.country,
-      phone: req.body.phone,
-      password: hashedPassword,
+      password: req.body.password,
     });
     const savedUser = await newUser.save();
     const id = savedUser._id;

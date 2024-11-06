@@ -43,7 +43,7 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.index({ email: 1 }, { unique: true });
-userSchema.index({ phone: 1 }, { phone: true });
+userSchema.index({ phone: 1 }, { unique: true });
 
 //todo: virtual filed for fullName
 

@@ -3,18 +3,23 @@ import bcrypt from "bcryptjs";
 
 // todo: elchanan - sign up functiond
 
-dotenv.config();
+// dotenv.config();
 
 const makeHashedPassword = async (password, superSecretKey, saltNum) => {
   try {
     const combainKey = password + superSecretKey;
-    const hashedPassword = await bcrypt.hash(combainKey, Number(saltNum));
-    console.log(hashedPassword);
-    return hashedPassword;
+    // const hashedPassword = await bcrypt.hash(combainKey, saltNum);
+    // console.log(hashedPassword);
+    // return hashedPassword;
   } catch (error) {
     console.log(`server error: ${error}`);
   }
 };
+
+// const signUp = (password, hashedPassword) => {
+//   try {
+//   } catch (error) {}
+// };
 
 // todo: nathan - sign in function - take the "hashed password" and the "req.body.password" and compare them useing bcrypt.compere.
 

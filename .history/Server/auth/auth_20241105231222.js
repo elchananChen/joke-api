@@ -16,6 +16,11 @@ const makeHashedPassword = async (password, superSecretKey, saltNum) => {
   }
 };
 
+const signUp = (password, hashedPassword) => {
+  try {
+  } catch (error) {}
+};
+
 // todo: nathan - sign in function - take the "hashed password" and the "req.body.password" and compare them useing bcrypt.compere.
 
 // async function signIn(password, mongoPassword) {
