@@ -27,7 +27,7 @@ const signIn = async (inputPassword, storedHashedPassword) => {
     const isMatch = await bcrypt.compare(combinedPassword, storedHashedPassword);
   
     if (!isMatch){
-      return { success: true, message: "Wrong password or email"}
+      return { success: false, message: "Wrong password or email"}
     }
     return { success: true, message: "Login successful" };
   } catch(error) {
@@ -38,6 +38,5 @@ const signIn = async (inputPassword, storedHashedPassword) => {
 
 export const auth = {
   makeHashedPassword,
-  //exporting new function
   signIn,
 };
