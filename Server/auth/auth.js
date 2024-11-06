@@ -24,6 +24,24 @@ const makeHashedPassword = async (password, superSecretKey, saltNum) => {
 // }
 // signIn(1344, 43231);
 
+
+//login function to compare the input Password with stored hashed password
+const signIn = async (inputPassword, storedHashedPassword) => {
+  try {
+    //combine the input password with our secret key 
+    const combinedPassword = inputPassword + process.env.ENCYPTION_SECRET;
+    //check if the combination of the two matches our stored password
+    const isMatch = await bcrypt.compare(combinedPassword, storedHashedPassword);
+  
+    return isMatch;
+  } catch(error) {
+    console.log(`server error: ${error}`);
+    return false;
+  }
+}
+
 export const auth = {
   makeHashedPassword,
+  //exporting new function
+  signIn,
 };
