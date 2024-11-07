@@ -20,7 +20,6 @@ const jokeSchema = new mongoose.Schema({
   },
   setUp: {
     type: String,
-    minLength: 4,
     required: function () {
       return this.category === "Knock-Knock Jokes"; // ידרוש את setUp רק אם category הוא "Knock-Knock Jokes"
     },

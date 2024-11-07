@@ -20,9 +20,14 @@ const jokeSchema = new mongoose.Schema({
   },
   setUp: {
     type: String,
-    minLength: 4,
-    required: function () {
-      return this.category === "Knock-Knock Jokes"; // ידרוש את setUp רק אם category הוא "Knock-Knock Jokes"
+    validate: {
+      validator: function (input) {
+        if (this.category === "Knock-Knock Jokes") {
+          return input && input.trim().length > 0;
+        }
+        return true;
+      },
+      message: "setUp is required for Knock-Knock Jokes category",
     },
   },
   punchline: {

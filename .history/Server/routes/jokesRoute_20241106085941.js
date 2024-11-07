@@ -16,7 +16,7 @@ router.get("/:id", jokeController.getJokeById, (req, res) => {
 });
 
 //add joke
-router.post("/", /* validator.validateJoke,*/ jokeController.addJoke);
+router.post("/", validator.validateJoke, jokeController.addJoke);
 
 // update joke
 router.patch("/:id", jokeController.updateJoke);

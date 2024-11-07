@@ -1,6 +1,7 @@
 import mongoose, { set } from "mongoose";
 
-// const isTwoStepsJoke =
+// const isTwoStepsJoke = 
+
 
 const jokeSchema = new mongoose.Schema({
   category: {
@@ -17,17 +18,21 @@ const jokeSchema = new mongoose.Schema({
   },
   content: {
     type: String,
+    validate: {},
   },
   setUp: {
     type: String,
-    minLength: 4,
-    required: function () {
-      return this.category === "Knock-Knock Jokes"; // ידרוש את setUp רק אם category הוא "Knock-Knock Jokes"
+    validate: {
+      validator: function(input){
+        if (this.category === "Knock-Knock Jokes") {
+          input.required
+        }
     },
   },
   punchline: {
     type: String,
   },
+
   creatadBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",

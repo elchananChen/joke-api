@@ -53,8 +53,7 @@ async function getJokeById(req, res, next) {
 const addJoke = async (req, res) => {
   try {
     const newJoke = new Joke({
-      setUp: req.body.setUp,
-      category: req.body.category,
+      joke: req.body.joke,
       content: req.body.content,
       creatadBy: req.body.creatadBy,
     });
